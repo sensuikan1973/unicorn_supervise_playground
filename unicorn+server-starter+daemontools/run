@@ -1,0 +1,17 @@
+#!/bin/sh
+
+exec 2>&1 \
+sh -c '\
+  export BUNDLE_SILENCE_ROOT_WARNING=1; \
+  cd /sample && bundle install; \
+  exec \
+    start_server \
+      --path=/sample/unicorn.sock \
+      --signal-on-term=QUIT \
+      --signal-on-hup=QUIT \
+      --dir=/sample \
+      --status-file=/sample/sample_server.status \
+      --pid-file=/sample/sample_server.pid \
+      --kill-old-delay=100 \
+    -- bundle exec unicorn /sample/src/config.ru --config-file /sample/src/unicorn.production.rb \
+'

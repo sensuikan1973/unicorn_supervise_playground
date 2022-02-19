@@ -1,0 +1,15 @@
+[Unit]
+Description=unicorn sample app
+
+[Service]
+Type=forking
+PIDFile=/sample/unicorn.pid
+WorkingDirectory=/sample
+ExecStart=/root/.rbenv/shims/bundle exec --keep-file-descriptors unicorn /sample/src/config.ru --config-file /sample/src/unicorn.conf_with_fork_hook.rb --daemonize
+ExecReload=/bin/kill -USR2 $MAINPID
+KillMode=process
+KillSignal=SIGQUIT
+NonBlocking=true
+
+[Install]
+WantedBy=multi-user.target

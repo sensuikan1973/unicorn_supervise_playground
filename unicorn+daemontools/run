@@ -1,0 +1,9 @@
+#!/bin/sh
+
+exec 2>&1 \
+sh -c '
+  cd /sample
+  bundle install
+  exec bundle exec unicorn ./src/config.ru --config-file ./src/unicorn.conf_with_fork_hook.rb
+'
+
