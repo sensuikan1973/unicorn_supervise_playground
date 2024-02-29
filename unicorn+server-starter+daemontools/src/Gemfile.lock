@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     kgio (2.11.4)
-    rack (2.2.6.4)
+    rack (2.2.8.1)
     raindrops (0.20.0)
     unicorn (5.1.0)
       kgio (~> 2.6)
@@ -13,7 +13,7 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
-  rack (= 2.2.6.4)
+  rack (= 2.2.8.1)
   unicorn (= 5.1.0)
 
 BUNDLED WITH
